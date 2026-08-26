@@ -15,8 +15,8 @@ import instinctInTheInfrastructure from "./assets/Musics/STRIXxXIRTS/INSTINCT IN
 import noGodsInTheStatic from "./assets/Musics/STRIXxXIRTS/NO GODS IN THE STATIC.mp3";
 import signalDistortion from "./assets/Musics/STRIXxXIRTS/SIGNAL DISTORTION.mp3";
 import theCityLeans from "./assets/Musics/STRIXxXIRTS/THE CITY LEANS.mp3";
-import keinGottFuerDenBlock from "./assets/Musics/STRIXxXIRTS/\"Kein Gott f�r den Block\".mp3";
-import schwarzerMarsch from "./assets/Musics/STRIXxXIRTS/\"Schwarzer Marsch\".mp3";
+import keinGottFuerDenBlock from "./assets/Musics/STRIXxXIRTS/Kein_Gott_fuer_den_Block.mp3";
+import schwarzerMarsch from "./assets/Musics/STRIXxXIRTS/Schwarzer_Marsch.mp3";
 
 export default function App() {
   const projectsData = [
