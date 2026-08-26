@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback, forwardRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { Play } from 'lucide-react'; // Using Lucide React as per instructions
+import logoUrl from '@/assets/logo.jpg';
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrambleTextPlugin);
@@ -386,7 +387,7 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}
 
         <aside className="corner-elements">
           <div className="corner-item top-left">
-            <div className="corner-square" aria-hidden="true"></div>
+            <img src={logoUrl} alt="Strix Music Logo" className="corner-logo" />
           </div>
           <nav className="corner-item top-right">
             <span style={{ margin: "0 0.5rem", cursor: "default" }}>Spotify</span> |
