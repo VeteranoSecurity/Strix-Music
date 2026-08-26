@@ -20,7 +20,7 @@ export default function App() {
       label: "SELF RELEASED",
       year: "2024",
       audio: trackNightcall,
-      image: img01
+      image: img04
     },
     {
       id: 2,
