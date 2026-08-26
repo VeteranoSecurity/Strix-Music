@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback, forwardRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { Play } from 'lucide-react'; // Using Lucide React as per instructions
-import logoUrl from '@/assets/logo.jpg';
+import logoUrl from '@/assets/logo.png';
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrambleTextPlugin);
