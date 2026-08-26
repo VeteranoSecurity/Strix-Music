@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+:root {
+  --color-accent: rgb(255, 223, 0);
+  --font-primary: "PP Supply Mono", monospace;
+}
+
+.dark {
+  --color-accent: rgb(255, 223, 0);
+  --font-primary: "PP Supply Mono", monospace;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #050505;
+  color: #fff;
+  font-family: var(--font-primary), system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Base styles for the portfolio */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+}
+
+.portfolio-container {
+  z-index: 10;
+  width: 100%;
+  max-width: 1000px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #666;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  background: transparent;
+  align-items: center;
+}
+
+.project-item:hover, .project-item.active {
+  color: #fff;
+}
+
+/* Playing state requested by the user */
+.project-item.playing {
+  position: relative;
+  border: 1px solid transparent; /* Hide normal border */
+  background: rgba(25, 25, 25, 0.6);
+  background-clip: padding-box; /* Let the before pseudo element show the border */
+  transform: scale(1.03);
+  color: #fff;
+  z-index: 10;
+}
+
+/* Animated glowing white border */
+.project-item.playing::before {
+  content: '';
+  position: absolute;
+  inset: -1px; /* The border width */
+  border-radius: 13px; /* Slightly larger than 12px item border */
+  background: linear-gradient(60deg, transparent 20%, rgba(255, 255, 255, 1) 50%, transparent 80%);
+  background-size: 300% 100%;
+  z-index: -1;
+  animation: borderGlow 2.5s ease-in-out infinite;
+}
+
+/* Make text inside playing item glow slightly too */
+.project-item.playing .project-data {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes borderGlow {
+  0% { background-position: 100% 50%; }
+  100% { background-position: -50% 50%; }
+}
+
+.project-data {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+}
+
+.project-data.artist {
+  flex: 1.5;
+  font-weight: 600;
+}
+.project-data.album {
+  flex: 2;
+}
+.project-data.year {
+  flex: 0.5;
+  text-align: right;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  transition: opacity 0.8s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+  transform: scale(1.1);
+}
+
+.background-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+  backdrop-filter: blur(10px);
+}
+
+.corner-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.corner-item {
+  position: absolute;
+  padding: 2.5rem;
+  pointer-events: auto;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.top-left { top: 0; left: 0; }
+.top-right { top: 0; right: 0; text-align: right; }
+.bottom-left { bottom: 0; left: 0; }
+.bottom-right { bottom: 0; right: 0; }
+
+.corner-square {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accent);
+}
+
+.time-blink {
+  animation: blink 1s step-end infinite;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .project-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.5rem;
+  }
+  .project-data {
+    width: 100%;
+  }
+  .project-data.year {
+    text-align: left;
+  }
+  .corner-item {
+    padding: 1.5rem;
+  }
+}
