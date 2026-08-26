@@ -6,6 +6,7 @@ import img03 from "./assets/Album-Images/03.jpg";
 import img04 from "./assets/Album-Images/04.jpg";
 import img05 from "./assets/Album-Images/05.jpg";
 import img06 from "./assets/Album-Images/06.jpg";
+import defaultBg from "./assets/default_bg.jpg";
 
 export default function App() {
   const projectsData = [
@@ -69,13 +70,8 @@ export default function App() {
     timeZone: "America/Sao_Paulo",
     timeUpdateInterval: 1000,
     idleDelay: 4000,
-    debounceDelay: 100
-  };
-
-  const socialLinks = {
-    spotify: "#",
-    email: "mailto:contact@blackvamp.com",
-    x: "https://x.com/blackvamp"
+    debounceDelay: 100,
+    defaultBackground: defaultBg
   };
 
   const location = {
@@ -97,7 +93,6 @@ export default function App() {
     <MusicPortfolio
       PROJECTS_DATA={projectsData}
       CONFIG={config}
-      SOCIAL_LINKS={socialLinks}
       LOCATION={location}
       CALLBACKS={callbacks}
     />

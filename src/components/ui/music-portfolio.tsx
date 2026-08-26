@@ -129,7 +129,7 @@ const ProjectItem = forwardRef<HTMLLIElement, ProjectItemProps>(
 });
 
 // Main Portfolio Component
-const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}, SOCIAL_LINKS={}}: {PROJECTS_DATA?: any, LOCATION?: any, CALLBACKS?: any, CONFIG?: any, SOCIAL_LINKS?: any}) => {
+const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}: {PROJECTS_DATA?: any, LOCATION?: any, CALLBACKS?: any, CONFIG?: any}) => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [playingIndex, setPlayingIndex] = useState(-1);
   const [isIdle, setIsIdle] = useState(true);
@@ -143,6 +143,12 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={},
 
   // Preload images
   useEffect(() => {
+    // Add default background
+    if (CONFIG.defaultBackground && backgroundRef.current && playingIndex === -1 && activeIndex === -1) {
+      backgroundRef.current.style.backgroundImage = `url(${CONFIG.defaultBackground})`;
+      backgroundRef.current.style.opacity = "0.2";
+    }
+
     PROJECTS_DATA.forEach((project: any) => {
       if (project.image) {
         const img = new Image();
@@ -277,6 +283,9 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={},
       if (playingIndex !== -1 && PROJECTS_DATA[playingIndex]?.image) {
         backgroundRef.current.style.backgroundImage = `url(${PROJECTS_DATA[playingIndex].image})`;
         backgroundRef.current.style.opacity = "0.4"; // Dim it a bit when not hovered
+      } else if (CONFIG.defaultBackground) {
+        backgroundRef.current.style.backgroundImage = `url(${CONFIG.defaultBackground})`;
+        backgroundRef.current.style.opacity = "0.2";
       } else {
         backgroundRef.current.style.opacity = "0.15";
       }
@@ -291,11 +300,14 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={},
       if (playingIndex !== -1 && PROJECTS_DATA[playingIndex]?.image) {
         backgroundRef.current.style.backgroundImage = `url(${PROJECTS_DATA[playingIndex].image})`;
         backgroundRef.current.style.opacity = "0.4";
+      } else if (CONFIG.defaultBackground) {
+        backgroundRef.current.style.backgroundImage = `url(${CONFIG.defaultBackground})`;
+        backgroundRef.current.style.opacity = "0.2";
       } else {
         backgroundRef.current.style.opacity = "0.15";
       }
     }
-  }, [playingIndex, activeIndex, PROJECTS_DATA]);
+  }, [playingIndex, activeIndex, PROJECTS_DATA, CONFIG.defaultBackground]);
 
   // Initial idle animation
   useEffect(() => {
@@ -345,11 +357,7 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={},
           <div className="corner-item top-left">
             <div className="corner-square" aria-hidden="true"></div>
           </div>
-          <nav className="corner-item top-right">
-            <a href={SOCIAL_LINKS.spotify || "#"}>Spotify</a> |
-            <a href={SOCIAL_LINKS.email || "#"}>Email</a> |
-            <a href={SOCIAL_LINKS.x || "#"} target="_blank" rel="noopener noreferrer">X</a>
-          </nav>
+
           <div className="corner-item bottom-left">{LOCATION.display ? `${LOCATION.latitude}, ${LOCATION.longitude}` : ''}</div>
           <TimeDisplay CONFIG={CONFIG} />
         </aside>
