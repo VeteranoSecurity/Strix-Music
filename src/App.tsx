@@ -1,6 +1,6 @@
 import MusicPortfolio from "@/components/ui/music-portfolio";
 import "./index.css";
-import img01 from "./assets/Album-Images/01.jpg";
+// import img01 from "./assets/Album-Images/01.jpg";
 import img02 from "./assets/Album-Images/02.jpg";
 import img03 from "./assets/Album-Images/03.jpg";
 import img04 from "./assets/Album-Images/04.jpg";
