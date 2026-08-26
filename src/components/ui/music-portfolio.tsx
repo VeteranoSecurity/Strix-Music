@@ -135,24 +135,26 @@ const ProjectItem = forwardRef<HTMLLIElement, ProjectItemProps>(
       onClick={() => onClick(index)}
       data-image={project.image}
     >
-      <div className="project-data artist flex items-center gap-2">
-        {isPlaying && <Play size={16} fill="currentColor" className="shrink-0" />}
-        <span ref={textRefs.artist} className="hover-text w-full truncate">
-          {project.artist}
+      <div className="marquee-wrapper">
+        <div className="project-data artist flex items-center gap-2">
+          {isPlaying && <Play size={16} fill="currentColor" className="shrink-0" />}
+          <span ref={textRefs.artist} className="hover-text w-full truncate">
+            {project.artist}
+          </span>
+        </div>
+        <span ref={textRefs.album} className="project-data album hover-text">
+          {project.album}
+        </span>
+        <span ref={textRefs.category} className="project-data category hover-text">
+          {project.category}
+        </span>
+        <span ref={textRefs.label} className="project-data label hover-text">
+          {project.label}
+        </span>
+        <span ref={textRefs.year} className="project-data year hover-text">
+          {project.year}
         </span>
       </div>
-      <span ref={textRefs.album} className="project-data album hover-text">
-        {project.album}
-      </span>
-      <span ref={textRefs.category} className="project-data category hover-text">
-        {project.category}
-      </span>
-      <span ref={textRefs.label} className="project-data label hover-text">
-        {project.label}
-      </span>
-      <span ref={textRefs.year} className="project-data year hover-text">
-        {project.year}
-      </span>
     </li>
   );
 });

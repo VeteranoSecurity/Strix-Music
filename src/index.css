@@ -67,18 +67,25 @@ body {
 }
 
 .project-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  cursor: pointer;
-  border: 1px solid transparent;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 0.5fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2.5rem;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
+  align-items: center;
+  position: relative;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: #666;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
   background: transparent;
-  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.marquee-wrapper {
+  display: contents;
 }
 
 .project-item:hover, .project-item.active {
@@ -140,7 +147,7 @@ body {
 }
 
 .background-image {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -165,7 +172,7 @@ body {
 }
 
 .corner-elements {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -227,18 +234,36 @@ a:hover {
 
   .project-list {
     gap: 1rem;
+    overflow-x: hidden;
   }
 
   .project-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    padding: 1rem;
+    overflow: hidden;
+    padding: 1rem 0;
+    border: none;
+  }
+  
+  .marquee-wrapper {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding-left: 100vw;
+    animation: marquee 12s linear infinite;
+  }
+  
+  .project-item.playing .marquee-wrapper {
+    animation-duration: 8s; /* slightly faster for playing track */
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
   }
   
   .project-data {
-    width: 100%;
-    white-space: normal; /* allow wrapping on small screens */
+    width: auto;
+    padding: 0 1rem;
+    white-space: nowrap;
   }
   
   .project-data.year {
