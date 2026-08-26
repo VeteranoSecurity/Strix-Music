@@ -8,64 +8,107 @@ import img05 from "./assets/Album-Images/05.jpg";
 import img06 from "./assets/Album-Images/06.jpg";
 import defaultBg from "./assets/background.avif";
 
-import trackNightcall from "./assets/Musics/Kavinsky - Nightcall.mp3";
+import cityWithoutKings from "./assets/Musics/STRIXxXIRTS/CITY WITHOUT KINGS.mp3";
+import endOfSilence from "./assets/Musics/STRIXxXIRTS/End of Silence.mp3";
+import ghostsOfTheImmortals from "./assets/Musics/STRIXxXIRTS/GHOSTS OF THE IMMORTALS.mp3";
+import instinctInTheInfrastructure from "./assets/Musics/STRIXxXIRTS/INSTINCT IN THE INFRASTRUCTURE.mp3";
+import noGodsInTheStatic from "./assets/Musics/STRIXxXIRTS/NO GODS IN THE STATIC.mp3";
+import signalDistortion from "./assets/Musics/STRIXxXIRTS/SIGNAL DISTORTION.mp3";
+import theCityLeans from "./assets/Musics/STRIXxXIRTS/THE CITY LEANS.mp3";
+import keinGottFuerDenBlock from "./assets/Musics/STRIXxXIRTS/\"Kein Gott f�r den Block\".mp3";
+import schwarzerMarsch from "./assets/Musics/STRIXxXIRTS/\"Schwarzer Marsch\".mp3";
 
 export default function App() {
   const projectsData = [
     {
       id: 1,
       artist: "STRIX MUSIC",
-      album: "NIGHTCALL",
+      album: "CITY WITHOUT KINGS",
       category: "SINGLE",
       label: "SELF RELEASED",
-      year: "2024",
-      audio: trackNightcall,
-      image: img04
+      year: "2026",
+      audio: cityWithoutKings,
+      image: img01
     },
     {
       id: 2,
       artist: "STRIX MUSIC",
-      album: "ETERNAL NIGHT",
-      category: "ALBUM",
+      album: "End of Silence",
+      category: "SINGLE",
       label: "SELF RELEASED",
-      year: "2024",
+      year: "2026",
+      audio: endOfSilence,
       image: img02
     },
     {
       id: 3,
       artist: "STRIX MUSIC",
-      album: "SHADOW DANCE",
-      category: "EP",
+      album: "GHOSTS OF THE IMMORTALS",
+      category: "SINGLE",
       label: "SELF RELEASED",
-      year: "2023",
+      year: "2026",
+      audio: ghostsOfTheImmortals,
       image: img03
     },
     {
       id: 4,
       artist: "STRIX MUSIC",
-      album: "BLOOD MOON",
+      album: "INSTINCT IN THE INFRASTRUCTURE",
       category: "SINGLE",
       label: "SELF RELEASED",
-      year: "2023",
-      image: img01
+      year: "2026",
+      audio: instinctInTheInfrastructure,
+      image: img04
     },
     {
       id: 5,
       artist: "STRIX MUSIC",
-      album: "VAMPIRE TEARS",
+      album: "NO GODS IN THE STATIC",
       category: "SINGLE",
       label: "SELF RELEASED",
-      year: "2022",
+      year: "2026",
+      audio: noGodsInTheStatic,
       image: img05
     },
     {
       id: 6,
       artist: "STRIX MUSIC",
-      album: "GOTHIC ROMANCE",
-      category: "EP",
+      album: "SIGNAL DISTORTION",
+      category: "SINGLE",
       label: "SELF RELEASED",
-      year: "2022",
+      year: "2026",
+      audio: signalDistortion,
       image: img06
+    },
+    {
+      id: 7,
+      artist: "STRIX MUSIC",
+      album: "THE CITY LEANS",
+      category: "SINGLE",
+      label: "SELF RELEASED",
+      year: "2026",
+      audio: theCityLeans,
+      image: img01
+    },
+    {
+      id: 8,
+      artist: "STRIX MUSIC",
+      album: "Kein Gott für den Block",
+      category: "SINGLE",
+      label: "SELF RELEASED",
+      year: "2026",
+      audio: keinGottFuerDenBlock,
+      image: img02
+    },
+    {
+      id: 9,
+      artist: "STRIX MUSIC",
+      album: "Schwarzer Marsch",
+      category: "SINGLE",
+      label: "SELF RELEASED",
+      year: "2026",
+      audio: schwarzerMarsch,
+      image: img03
     }
   ];
 
