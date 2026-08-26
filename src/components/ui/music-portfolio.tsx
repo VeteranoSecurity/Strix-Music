@@ -42,6 +42,35 @@ const TimeDisplay = ({CONFIG={}}: {CONFIG?: any}) => {
   );
 };
 
+// Typewriter Text Component
+const TypewriterText = ({ text }: { text: string }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  useEffect(() => {
+    let timer: any;
+    if (!isDeleting && displayText === text) {
+      // Pause at the end before deleting
+      timer = setTimeout(() => setIsDeleting(true), 2500);
+    } else if (isDeleting && displayText === '') {
+      // Pause before typing again
+      timer = setTimeout(() => setIsDeleting(false), 1000);
+    } else {
+      const nextText = isDeleting 
+        ? text.substring(0, displayText.length - 1)
+        : text.substring(0, displayText.length + 1);
+        
+      const typingSpeed = isDeleting ? 30 : 100;
+      
+      timer = setTimeout(() => setDisplayText(nextText), typingSpeed);
+    }
+    
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, text]);
+
+  return <span>{displayText}<span className="time-blink">_</span></span>;
+};
+
 // ProjectItem Props Interface
 interface ProjectItemProps {
   project: any;
@@ -363,6 +392,9 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}
             <span style={{ margin: "0 0.5rem", cursor: "default" }}>X</span>
           </nav>
           <div className="corner-item bottom-left">{LOCATION.display ? `${LOCATION.latitude}, ${LOCATION.longitude}` : ''}</div>
+          <div className="corner-item bottom-center">
+            <TypewriterText text="Desenvolvido por TrilhaRede" />
+          </div>
           <TimeDisplay CONFIG={CONFIG} />
         </aside>
       </div>
