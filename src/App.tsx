@@ -6,7 +6,7 @@ import img03 from "./assets/Album-Images/03.jpg";
 import img04 from "./assets/Album-Images/04.jpg";
 import img05 from "./assets/Album-Images/05.jpg";
 import img06 from "./assets/Album-Images/06.jpg";
-import defaultBg from "./assets/default_bg.jpg";
+import defaultBg from "./assets/background.avif";
 
 export default function App() {
   const projectsData = [
