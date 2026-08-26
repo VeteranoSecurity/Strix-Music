@@ -8,6 +8,8 @@ import img05 from "./assets/Album-Images/05.jpg";
 import img06 from "./assets/Album-Images/06.jpg";
 import defaultBg from "./assets/background.avif";
 
+import trackNightcall from "./assets/Musics/Kavinsky - Nightcall.mp3";
+
 export default function App() {
   const projectsData = [
     {
@@ -17,6 +19,7 @@ export default function App() {
       category: "SINGLE",
       label: "SELF RELEASED",
       year: "2024",
+      audio: trackNightcall,
       image: img01
     },
     {

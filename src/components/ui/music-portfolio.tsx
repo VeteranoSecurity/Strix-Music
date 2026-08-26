@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { Play } from 'lucide-react'; // Using Lucide React as per instructions
 import logoUrl from '@/assets/logo.png';
+import AudioPlayer from './audio-player';
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrambleTextPlugin);
@@ -164,6 +165,7 @@ const ProjectItem = forwardRef<HTMLLIElement, ProjectItemProps>(
 const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}: {PROJECTS_DATA?: any, LOCATION?: any, CALLBACKS?: any, CONFIG?: any}) => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [playingIndex, setPlayingIndex] = useState(-1);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isIdle, setIsIdle] = useState(true);
   
   const backgroundRef = useRef<HTMLDivElement>(null);
@@ -290,7 +292,14 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}
 
   // Handle click on project
   const handleProjectClick = useCallback((index: number) => {
-    setPlayingIndex(prevIndex => prevIndex === index ? -1 : index);
+    setPlayingIndex(prevIndex => {
+      if (prevIndex === index) {
+        setIsPlaying(p => !p);
+        return index;
+      }
+      setIsPlaying(true);
+      return index;
+    });
     if (CALLBACKS.onProjectClick) CALLBACKS.onProjectClick(PROJECTS_DATA[index]);
   }, [CALLBACKS, PROJECTS_DATA]);
 
@@ -369,13 +378,41 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}
                 onMouseLeave={handleProjectMouseLeave}
                 onClick={handleProjectClick}
                 isActive={activeIndex === index}
-                isPlaying={playingIndex === index}
+                isPlaying={playingIndex === index && isPlaying}
                 isIdle={isIdle}
                 ref={(el: HTMLLIElement | null) => { projectItemsRef.current[index] = el; }}
               />
             ))}
           </ul>
         </main>
+        
+        <div className="fixed bottom-24 md:bottom-12 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+          {playingIndex !== -1 && PROJECTS_DATA[playingIndex]?.audio && (
+            <AudioPlayer
+              src={PROJECTS_DATA[playingIndex].audio}
+              isPlaying={isPlaying}
+              onTogglePlay={() => setIsPlaying(p => !p)}
+              onNext={() => {
+                let next = playingIndex + 1;
+                while (next < PROJECTS_DATA.length && !PROJECTS_DATA[next].audio) {
+                  next++;
+                }
+                if (next >= PROJECTS_DATA.length) next = 0;
+                setPlayingIndex(next);
+                setIsPlaying(true);
+              }}
+              onPrev={() => {
+                let prev = playingIndex - 1;
+                while (prev >= 0 && !PROJECTS_DATA[prev].audio) {
+                  prev--;
+                }
+                if (prev < 0) prev = PROJECTS_DATA.length - 1;
+                setPlayingIndex(prev);
+                setIsPlaying(true);
+              }}
+            />
+          )}
+        </div>
 
         <div 
           ref={backgroundRef}
