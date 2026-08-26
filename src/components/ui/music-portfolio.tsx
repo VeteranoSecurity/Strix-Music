@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, forwardRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { Play } from 'lucide-react'; // Using Lucide React as per instructions
@@ -42,10 +42,26 @@ const TimeDisplay = ({CONFIG={}}: {CONFIG?: any}) => {
   );
 };
 
+// ProjectItem Props Interface
+interface ProjectItemProps {
+  project: any;
+  index: number;
+  onMouseEnter: (index: number, imageUrl: string) => void;
+  onMouseLeave: () => void;
+  onClick: (index: number) => void;
+  isActive: boolean;
+  isIdle: boolean;
+  isPlaying: boolean;
+}
+
 // Project Item Component
-const ProjectItem = ({ project, index, onMouseEnter, onMouseLeave, onClick, isActive, isIdle, isPlaying }: {project: any, index: number, onMouseEnter: any, onMouseLeave: any, onClick: any, isActive: boolean, isIdle: boolean, isPlaying: boolean}) => {
-  const itemRef = useRef<HTMLLIElement>(null);
-  const textRefs = {
+const ProjectItem = forwardRef<HTMLLIElement, ProjectItemProps>(
+  ({ project, index, onMouseEnter, onMouseLeave, onClick, isActive, isIdle, isPlaying }, ref) => {
+    // We can merge the external ref and internal itemRef or just use the external one for animations if needed.
+    // The user's code uses projectItemsRef.current[index] = el on the <li>
+    // And itemRef is inside ProjectItem but it's never used. 
+    // Wait, let's just pass the forwarded ref down to the li instead of itemRef.
+    const textRefs = {
     artist: useRef<HTMLSpanElement>(null),
     album: useRef<HTMLSpanElement>(null),
     category: useRef<HTMLSpanElement>(null),
@@ -83,7 +99,7 @@ const ProjectItem = ({ project, index, onMouseEnter, onMouseLeave, onClick, isAc
 
   return (
     <li 
-      ref={itemRef}
+      ref={ref}
       className={`project-item ${isActive ? 'active' : ''} ${isIdle ? 'idle' : ''} ${isPlaying ? 'playing' : ''}`}
       onMouseEnter={() => onMouseEnter(index, project.image)}
       onMouseLeave={onMouseLeave}
@@ -110,7 +126,7 @@ const ProjectItem = ({ project, index, onMouseEnter, onMouseLeave, onClick, isAc
       </span>
     </li>
   );
-};
+});
 
 // Main Portfolio Component
 const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}, SOCIAL_LINKS={}}: {PROJECTS_DATA?: any, LOCATION?: any, CALLBACKS?: any, CONFIG?: any, SOCIAL_LINKS?: any}) => {
@@ -311,7 +327,7 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={},
                 isActive={activeIndex === index}
                 isPlaying={playingIndex === index}
                 isIdle={isIdle}
-                ref={(el: HTMLLIElement) => projectItemsRef.current[index] = el}
+                ref={(el: HTMLLIElement | null) => { projectItemsRef.current[index] = el; }}
               />
             ))}
           </ul>
