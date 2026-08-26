@@ -15,7 +15,7 @@ export default function App() {
     {
       id: 1,
       artist: "STRIX MUSIC",
-      album: "MIDNIGHT SUN",
+      album: "NIGHTCALL",
       category: "SINGLE",
       label: "SELF RELEASED",
       year: "2024",
