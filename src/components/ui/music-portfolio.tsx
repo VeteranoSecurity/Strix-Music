@@ -357,7 +357,11 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}
           <div className="corner-item top-left">
             <div className="corner-square" aria-hidden="true"></div>
           </div>
-
+          <nav className="corner-item top-right">
+            <span style={{ margin: "0 0.5rem", cursor: "default" }}>Spotify</span> |
+            <span style={{ margin: "0 0.5rem", cursor: "default" }}>Email</span> |
+            <span style={{ margin: "0 0.5rem", cursor: "default" }}>X</span>
+          </nav>
           <div className="corner-item bottom-left">{LOCATION.display ? `${LOCATION.latitude}, ${LOCATION.longitude}` : ''}</div>
           <TimeDisplay CONFIG={CONFIG} />
         </aside>
