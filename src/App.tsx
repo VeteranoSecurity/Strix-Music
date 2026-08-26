@@ -1,6 +1,6 @@
 import MusicPortfolio from "@/components/ui/music-portfolio";
 import "./index.css";
-// import img01 from "./assets/Album-Images/01.jpg";
+import img01 from "./assets/Album-Images/01.jpg";
 import img02 from "./assets/Album-Images/02.jpg";
 import img03 from "./assets/Album-Images/03.jpg";
 import img04 from "./assets/Album-Images/04.jpg";
@@ -47,7 +47,7 @@ export default function App() {
       category: "SINGLE",
       label: "SELF RELEASED",
       year: "2023",
-      image: img04
+      image: img01
     },
     {
       id: 5,
