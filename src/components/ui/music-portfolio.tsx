@@ -394,7 +394,7 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}
           <div className="corner-item bottom-left">{LOCATION.display ? `${LOCATION.latitude}, ${LOCATION.longitude}` : ''}</div>
           <div className="corner-item bottom-center">
             <a 
-              href="https://wa.me/556182573590?text=quero%20fazer%20um%20site%2Fdesign%20com%20voce" 
+              href="https://wa.me/5561982573590?text=quero%20fazer%20um%20site%2Fdesign%20com%20voce" 
               target="_blank" 
               rel="noopener noreferrer"
               style={{ cursor: "pointer" }}
