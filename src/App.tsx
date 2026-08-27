@@ -25,7 +25,7 @@ export default function App() {
   const projectsData = [
     {
       id: 1,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "CITY WITHOUT KINGS",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -35,7 +35,7 @@ export default function App() {
     },
     {
       id: 2,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "End of Silence",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -45,7 +45,7 @@ export default function App() {
     },
     {
       id: 3,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "GHOSTS OF THE IMMORTALS",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -55,7 +55,7 @@ export default function App() {
     },
     {
       id: 4,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "INSTINCT IN THE INFRASTRUCTURE",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -65,7 +65,7 @@ export default function App() {
     },
     {
       id: 5,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "NO GODS IN THE STATIC",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -75,7 +75,7 @@ export default function App() {
     },
     {
       id: 6,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "SIGNAL DISTORTION",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -85,7 +85,7 @@ export default function App() {
     },
     {
       id: 7,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "THE CITY LEANS",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -95,7 +95,7 @@ export default function App() {
     },
     {
       id: 8,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "Kein Gott für den Block",
       category: "SINGLE",
       label: "SELF RELEASED",
@@ -105,7 +105,7 @@ export default function App() {
     },
     {
       id: 9,
-      artist: "STRIX MUSIC",
+      artist: "LYCAN",
       album: "Schwarzer Marsch",
       category: "SINGLE",
       label: "SELF RELEASED",
