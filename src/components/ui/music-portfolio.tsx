@@ -144,9 +144,11 @@ const ProjectItem = forwardRef<HTMLLIElement, ProjectItemProps>(
             {project.artist}
           </span>
         </div>
-        <span ref={textRefs.album} className="project-data album hover-text">
-          {project.album}
-        </span>
+        <div className="project-data album">
+          <span ref={textRefs.album} className="hover-text marquee-desktop-text">
+            {project.album}
+          </span>
+        </div>
         <span ref={textRefs.category} className="project-data category hover-text">
           {project.category}
         </span>
@@ -386,10 +388,11 @@ const MusicPortfolio = ({PROJECTS_DATA=[], LOCATION={}, CALLBACKS={}, CONFIG={}}
           </ul>
         </main>
         
-        <div className="fixed bottom-24 md:bottom-12 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+        <div className="fixed bottom-28 md:bottom-24 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
           {playingIndex !== -1 && PROJECTS_DATA[playingIndex]?.audio && (
             <AudioPlayer
               src={PROJECTS_DATA[playingIndex].audio}
+              title={PROJECTS_DATA[playingIndex].album}
               isPlaying={isPlaying}
               onTogglePlay={() => setIsPlaying(p => !p)}
               onNext={() => {

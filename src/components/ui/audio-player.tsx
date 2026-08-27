@@ -55,12 +55,14 @@ const CustomSlider = ({
 
 const AudioPlayer = ({
   src,
+  title,
   isPlaying,
   onTogglePlay,
   onNext,
   onPrev,
 }: {
   src: string;
+  title?: string;
   isPlaying: boolean;
   onTogglePlay: () => void;
   onNext?: () => void;
@@ -133,6 +135,13 @@ const AudioPlayer = ({
         />
 
         <motion.div className="flex flex-col w-full gap-y-1">
+          {title && (
+            <div className="w-full text-center overflow-hidden mb-1">
+              <span className="text-white/90 text-xs font-mono tracking-wider truncate block">
+                {title}
+              </span>
+            </div>
+          )}
           {/* Slider */}
           <motion.div className="flex flex-col gap-y-1">
             <CustomSlider
