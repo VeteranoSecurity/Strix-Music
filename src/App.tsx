@@ -1,13 +1,13 @@
 import MusicPortfolio from "@/components/ui/music-portfolio";
 import "./index.css";
 import img01 from "./assets/Album-Images/old vampir.jpg";
-import img02 from "./assets/Album-Images/bats.jpg";
+import img02 from "./assets/Album-Images/bats animate.gif";
 import img03 from "./assets/Album-Images/V X L.jpg";
-import img04 from "./assets/Album-Images/gold Eyes.png";
+import img04 from "./assets/Album-Images/Gold eye animate.gif";
 import img05 from "./assets/Album-Images/blackwhite crown.gif";
 import img06 from "./assets/Album-Images/Werewolf house.png";
 import img07 from "./assets/Album-Images/crypt.jpg";
-import img08 from "./assets/Album-Images/Werewolf real.png";
+import img08 from "./assets/Album-Images/werewolf real animate.gif";
 import img09 from "./assets/Album-Images/wewwolf water.jpg";
 import defaultBg from "./assets/background.avif";
 
