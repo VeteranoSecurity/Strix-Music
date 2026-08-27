@@ -1,11 +1,14 @@
 import MusicPortfolio from "@/components/ui/music-portfolio";
 import "./index.css";
-import img01 from "./assets/Album-Images/01.jpg";
-import img02 from "./assets/Album-Images/02.jpg";
-import img03 from "./assets/Album-Images/03.jpg";
-import img04 from "./assets/Album-Images/04.jpg";
-import img05 from "./assets/Album-Images/05.jpg";
-import img06 from "./assets/Album-Images/06.jpg";
+import img01 from "./assets/Album-Images/old vampir.jpg";
+import img02 from "./assets/Album-Images/bats.jpg";
+import img03 from "./assets/Album-Images/V X L.jpg";
+import img04 from "./assets/Album-Images/gold Eyes.png";
+import img05 from "./assets/Album-Images/blackwhite crown.gif";
+import img06 from "./assets/Album-Images/Werewolf house.png";
+import img07 from "./assets/Album-Images/crypt.jpg";
+import img08 from "./assets/Album-Images/Werewolf real.png";
+import img09 from "./assets/Album-Images/wewwolf water.jpg";
 import defaultBg from "./assets/background.avif";
 
 import cityWithoutKings from "./assets/Musics/STRIXxXIRTS/CITY WITHOUT KINGS.mp3";
@@ -88,7 +91,7 @@ export default function App() {
       label: "SELF RELEASED",
       year: "2026",
       audio: theCityLeans,
-      image: img01
+      image: img07
     },
     {
       id: 8,
@@ -98,7 +101,7 @@ export default function App() {
       label: "SELF RELEASED",
       year: "2026",
       audio: keinGottFuerDenBlock,
-      image: img02
+      image: img08
     },
     {
       id: 9,
@@ -108,7 +111,7 @@ export default function App() {
       label: "SELF RELEASED",
       year: "2026",
       audio: schwarzerMarsch,
-      image: img03
+      image: img09
     }
   ];
 
